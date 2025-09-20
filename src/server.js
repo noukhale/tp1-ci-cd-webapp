@@ -1,16 +1,16 @@
-const http = require('http');
+const express = require('express');
+const path = require('path');
+const app = express();
+const PORT = process.env.PORT || 3000;
 
-const server = http.createServer((req, res) => {
-  // Définir le type de contenu comme texte simple
-  res.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' });
-  
-  // Message pour Bassma
-  res.end('Test de NOUKHALE  😁😁');
+// Servir les fichiers statiques
+app.use(express.static(path.join(__dirname, '../public')));
+
+// Endpoint API simple
+app.get('/api/hello', (req, res) => {
+  res.json({ message: 'Hello from Node.js!' });
 });
 
-const port = process.env.PORT || 3000;
-const host = '0.0.0.0';
-
-server.listen(port, host, () => {
-  console.log(`🚀 Serveur démarré sur http://${host}:${port}`);
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
 });
