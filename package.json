@@ -1,14 +1,13 @@
 {
-"name": "tp1-ci-cd" ,
-"version": "1.0.0" ,
-"description": "Demo CI/CD Azure App Service with Jest" ,
-"main": "src/server.js" ,
-"scripts": {
-"start": "node src/server.js" ,
-"test": "jest --ci" ,
-"build": "mkdir -p dist && cp -r src/* dist/"
-},
-"devDependencies": {
-"jest": "^29.7.0"
-}
+  "name": "my-webapp",
+  "version": "1.0.0",
+  "description": "Site web Node.js minimal et structuré",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node tests/sample.test.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
