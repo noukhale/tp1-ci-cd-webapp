@@ -1,0 +1,34 @@
+name: CI - Build & Test
+# Déclenchement à chaque push ou pull request sur main
+on:
+push:
+branches: [ main ]
+pull_request:
+branches: [ main ]
+jobs:
+build-test:
+runs-on: ubuntu-latest # Runner Linux gratuit
+steps:
+# Étape 1 — Récupérer le code du dépôt
+- name: Checkout code
+uses: actions/checkout@v3
+# Étape 2 — Installer Node.js et npm
+- name: Setup Node.js
+uses: actions/setup-node@v3
+with:
+node-version: '20'
+# Étape 3 — Installer les dépendances (inclut Jest)
+- name: Install dependencies
+run: npm install
+# Étape 4 — Audit sécurité : bloque si vulnérabilités >= moderate
+- name: Security audit
+run: npm audit --audit-level=moderate
+# Étape 5 — Lint (optionnel, n'échoue pas si eslint absent)
+- name: Run lint
+run: npx eslint . || true
+# Étape 6 — Lancer les tests unitaires Jest
+- name: Run tests
+run: npm test
+# Étape 7 — Build : copie du code vers dist/
+- name: Build project
+run: npm run build
