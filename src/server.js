@@ -1,13 +1,14 @@
 // --------------------
 // server.js
 // --------------------
-const express = require("express");
-const app = express();
-const PORT = 3000;
+const http = require('http');
 
-// Route principale "/"
-app.get("/", (req, res) => {
-  res.send(`
+const server = http.createServer((req, res) => {
+  // Définir le type de contenu comme HTML
+  res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+
+  // Page HTML envoyée comme réponse
+  res.end(`
     <!DOCTYPE html>
     <html lang="fr">
     <head>
@@ -43,7 +44,9 @@ app.get("/", (req, res) => {
   `);
 });
 
-// Lancer le serveur
-app.listen(PORT, () => {
-  console.log(\`🚀 Serveur démarré sur http://localhost:\${PORT}\`);
+const port = process.env.PORT || 3000;
+const host = '0.0.0.0';
+
+server.listen(port, host, () => {
+  console.log(`🚀 Serveur démarré sur http://${host}:${port}`);
 });
