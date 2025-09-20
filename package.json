@@ -1,11 +1,10 @@
 {
-  "name": "my-webapp",
+  "name": "tp1-ci-cd-webapp",
   "version": "1.0.0",
-  "description": "Site web Node.js minimal et structuré",
+  "description": "Webapp Node.js simple sans tests",
   "main": "src/server.js",
   "scripts": {
-    "start": "node src/server.js",
-    "test": "node tests/sample.test.js"
+    "start": "node src/server.js"
   },
   "dependencies": {
     "express": "^4.18.2"
