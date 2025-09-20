@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon WebApp Node.js</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Bienvenue sur mon site Node.js</h1>
+    </header>
+    <main>
+        <p>Ceci est un exemple de site minimal mais bien structuré.</p>
+        <button id="api-btn">Appeler API</button>
+        <p id="api-result"></p>
+    </main>
+    <script>
+        document.getElementById('api-btn').onclick = async () => {
+            const res = await fetch('/api/hello');
+            const data = await res.json();
+            document.getElementById('api-result').innerText = data.message;
+        };
+    </script>
+</body>
+</html>
